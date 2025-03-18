@@ -7,7 +7,7 @@
     <style>
         body {
             background-image: url('https://i.postimg.cc/C5mLRRbX/Imagen-de-Whats-App-2025-03-18-a-las-15-16-26-ac525b0c.jpg');
-            background-size: contain;
+            background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -20,10 +20,11 @@
             margin: 0;
             flex-direction: column;
             position: relative;
+            text-align: center;
         }
 
         .boton {
-            padding: 12px 24px;
+            padding: 12px 25px;
             font-size: 20px;
             background-color: #ff4d6d;
             color: white;
@@ -33,7 +34,7 @@
             font-weight: bold;
             transition: 0.3s;
             z-index: 2;
-            margin-bottom: 300px; /* Botón más arriba */
+            margin-bottom: 300px; /* Ajuste responsivo */
         }
 
         .boton:hover {
@@ -44,31 +45,32 @@
             width: 90%;
             max-width: 400px;
             background-color: pink;
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             text-align: center;
             display: none;
-            border: 5px solid white;
-            position: relative;
+            border: 4px solid white;
             z-index: 1;
+            font-size: 16px;
         }
 
         .carta h1 {
             color: #ff3366;
             font-family: 'Courier New', Courier, monospace;
+            font-size: 22px;
         }
 
         .carta p {
             color: #800000;
-            font-size: 16px;
+            font-size: 14px;
             font-family: 'Georgia', serif;
-            margin-top: 15px;
-            line-height: 1.4;
+            margin-top: 10px;
+            line-height: 1.5;
         }
 
         .boton-cerrar {
-            padding: 10px 20px;
+            padding: 8px 16px;
             font-size: 14px;
             background-color: #ff4d6d;
             color: white;
@@ -77,7 +79,7 @@
             border-radius: 8px;
             font-weight: bold;
             transition: 0.3s;
-            margin-top: 15px;
+            margin-top: 10px;
             display: none;
         }
 
@@ -119,7 +121,7 @@
         /* Efecto de explosión de corazones */
         .explosion {
             position: absolute;
-            font-size: 50px;
+            font-size: 40px;
             animation: explosion 1s forwards;
             opacity: 1;
             pointer-events: none;
@@ -133,6 +135,24 @@
             100% {
                 transform: scale(2) rotate(360deg);
                 opacity: 0;
+            }
+        }
+
+        /* Ajustes para pantallas pequeñas */
+        @media (max-width: 600px) {
+            .boton {
+                font-size: 16px;
+                padding: 8px 16px;
+                margin-bottom: 150px;
+            }
+            .carta {
+                font-size: 14px;
+            }
+            .carta h1 {
+                font-size: 20px;
+            }
+            .carta p {
+                font-size: 12px;
             }
         }
     </style>
@@ -164,13 +184,9 @@
         let intervaloCorazones;
 
         function abrirCarta() {
-            let boton = document.querySelector('.boton');
-            let carta = document.getElementById("carta");
-            let cerrarBoton = document.querySelector(".boton-cerrar");
-
-            boton.style.display = 'none';
-            carta.style.display = "block";
-            cerrarBoton.style.display = "block";
+            document.querySelector('.boton').style.display = 'none';
+            document.getElementById("carta").style.display = "block";
+            document.querySelector(".boton-cerrar").style.display = "block";
             
             let musica = document.getElementById("musica");
             if (musica) {
@@ -180,23 +196,19 @@
 
             // Iniciar la lluvia infinita de corazones inmediatamente
             if (!intervaloCorazones) {
-                intervaloCorazones = setInterval(crearLluvia, 150);
+                intervaloCorazones = setInterval(crearLluvia, 100);
             }
 
             // Efecto de explosión de corazones al abrir la carta
-            for (let i = 0; i < 20; i++) {
+            for (let i = 0; i < 15; i++) {
                 crearExplosion();
             }
         }
 
         function cerrarCarta() {
-            let boton = document.querySelector('.boton');
-            let carta = document.getElementById("carta");
-            let cerrarBoton = document.querySelector(".boton-cerrar");
-
-            boton.style.display = 'block';
-            carta.style.display = "none";
-            cerrarBoton.style.display = "none";
+            document.querySelector('.boton').style.display = 'block';
+            document.getElementById("carta").style.display = "none";
+            document.querySelector(".boton-cerrar").style.display = "none";
 
             let musica = document.getElementById("musica");
             if (musica) {
@@ -219,7 +231,7 @@
             corazon.style.top = "-20px";
             corazon.style.fontSize = Math.random() * 30 + 10 + "px";
 
-            setTimeout(() => corazon.remove(), 20000);
+            setTimeout(() => corazon.remove(), 15000);
         }
 
         function crearExplosion() {
