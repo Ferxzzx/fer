@@ -8,6 +8,7 @@
         body {
            background-image: url('https://i.postimg.cc/C5mLRRbX/Imagen-de-Whats-App-2025-03-18-a-las-15-16-26-ac525b0c.jpg');
             background-size: contain;
+            background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -33,7 +34,7 @@
             font-weight: bold;
             transition: 0.3s;
             z-index: 2;
-            margin-bottom: 600px;
+            margin-bottom: 700px;
         }
 
         .boton:hover {
@@ -42,7 +43,7 @@
 
         .carta {
             width: 90%;
-            max-width: 400px;
+            max-width: 350px;
             background-color: pink;
             padding: 20px;
             border-radius: 15px;
@@ -203,7 +204,6 @@
             corazon.style.top = "-20px";
             corazon.style.fontSize = Math.random() * 30 + 10 + "px";
 
-            setTimeout(() => corazon.remove(), 10000);
         }
 
         function crearExplosion() {
